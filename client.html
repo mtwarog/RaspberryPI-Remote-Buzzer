@@ -1,0 +1,49 @@
+<html>
+<head>
+<style>
+.myButton {
+	background-color:#c74545;
+	-moz-border-radius:30px;
+	-webkit-border-radius:30px;
+	border-radius:30px;
+	border:2px solid #ab1919;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:18px 5px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #662828;
+}
+.myButton:hover {
+	background-color:#e81919;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+</style>
+</head>
+<body>
+<div onclick="clicked()"><a href="#" class="myButton" >Bzzz..</a></div>
+<script>
+function clicked(){
+	var data = "Buzz";
+	var buzzerServer = 'http://quanrepo.ddns.net:1490/'
+	var xmlhttp=new XMLHttpRequest();
+	xmlhttp.open("POST", buzzerServer);
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+			if(xmlhttp.status == 200){
+				console.log('Response: ' + xmlhttp.responseText );
+			}else{
+				console.log('Error: ' + xmlhttp.statusText )
+			}
+		}
+	}
+	xmlhttp.send(data);
+}
+</script>
+</body>
+</html>
